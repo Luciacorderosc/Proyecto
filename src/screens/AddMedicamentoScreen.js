@@ -104,9 +104,10 @@ export default function AddMedicamentoScreen() {
 
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20 },
+  container: { flex: 1, padding: 16, backgroundColor: "#fff" },
   title: { fontSize: 22, fontWeight: 'bold', marginBottom: 15, textAlign: 'center' },
   item: {
+    backgroundColor: "#fff",
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -114,5 +115,5 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#ddd',
   },
-  text: { fontSize: 16 },
+  text: { fontSize: 16, color: '#111', },
 });

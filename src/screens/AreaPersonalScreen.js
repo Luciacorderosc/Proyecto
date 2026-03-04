@@ -121,7 +121,7 @@ export default function AreaPersonalScreen() {
             ) : (
                 medicacion.map((item) => (
                     <View key={item.id} style={styles.medicamentoRow}>
-                        <Text style={styles.medicamento}>• {item.medicamentos.nombre}</Text>
+                        <Text style={styles.medicamento} numberOfLines={1} ellipsizeMode="tail">• {item.medicamentos.nombre}</Text>
 
                         <View style={styles.buttonsRow}>
                             <TouchableOpacity
@@ -253,11 +253,15 @@ const styles = StyleSheet.create({
     medicamento: {
         fontSize: 17,
         fontWeight: '600',
-        color: '#333'
+        color: '#333',
+        flex:1,
+        flexShrink:1,
+        marginRight:12,
     },
     buttonsRow: {
         flexDirection: 'row',
-        gap: 15
+        alignItems: 'center',
+        gap: 12,
     },
     // Estilos de los botoncitos del MODAL
     puntualItem: {

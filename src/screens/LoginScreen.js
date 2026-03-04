@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, TextInput, Button, StyleSheet,TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { supabase } from '../lib/supabase'; // Asegúrate de que la ruta sea correcta
+import { supabase } from '../lib/supabase';
 import { Alert } from 'react-native';
 
 export default function LoginScreen() {
@@ -39,8 +39,8 @@ export default function LoginScreen() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>LumiPharma</Text>
-            <TextInput placeholder="Email" style={styles.input} value={email} onChangeText={setEmail} />
-            <TextInput placeholder="Contraseña" style={styles.input} value={password} onChangeText={setPassword} secureTextEntry />
+            <TextInput placeholder="Email" style={styles.input} value={email} onChangeText={setEmail} placeholderTextColor="#666"/>
+            <TextInput placeholder="Contraseña" style={styles.input} value={password} onChangeText={setPassword}  placeholderTextColor="#666" secureTextEntry />
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
                 <Text style={styles.buttonText}>Sign in</Text>
             </TouchableOpacity>
