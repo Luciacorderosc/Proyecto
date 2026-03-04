@@ -29,7 +29,6 @@ export default function AreaPersonalScreen() {
             const { data: { user } } = await supabase.auth.getUser();
             if (user) {
                 setUserId(user.id);
-                // PASO CLAVE: Le pasamos el ID directamente a la función
                 cargarMedicacion(user.id);
             } else {
                 router.replace('/');
@@ -39,7 +38,7 @@ export default function AreaPersonalScreen() {
     }, []);
 
     const cargarMedicacion = async (idForzado) => {
-        // Si no recibe idForzado, intenta usar el del estado (userId)
+
         const idAUsar = idForzado || userId;
 
         if (!idAUsar) {
@@ -55,7 +54,7 @@ export default function AreaPersonalScreen() {
             medicamento_id,
             medicamentos (id, nombre)
         `)
-            .eq('usuario_id', idAUsar); // Aquí ya no será undefined
+            .eq('usuario_id', idAUsar);
 
         if (error) {
             Alert.alert('Error', error.message);
@@ -100,7 +99,7 @@ export default function AreaPersonalScreen() {
             return;
         }
 
-        // Filtrar puntuales duplicados
+
         const uniqueData = data.filter(
             (v, i, a) => a.findIndex(t => t.id === v.id) === i
         );

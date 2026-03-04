@@ -12,24 +12,23 @@ export default function LoginScreen() {
     const [password, setPassword] = useState('');
 
     const handleLogin = async () => {
-        // 1. Validación simple
         if (!email || !password) {
             Alert.alert('Atención', 'Los campos son obligatorios');
             return;
         }
 
         try {
-            // 2. Intentar inicio de sesión
+
             const { data, error } = await supabase.auth.signInWithPassword({
                 email: email,
                 password: password,
             });
 
             if (error) {
-                // Si la contraseña está mal o el usuario no existe
+
                 Alert.alert('Error de acceso', error.message);
             } else {
-                // ¡Éxito! Supabase guarda la sesión en el dispositivo automáticamente
+
                 router.replace('/areaPersonal');
             }
         } catch (err) {

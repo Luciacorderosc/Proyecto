@@ -17,20 +17,19 @@ export default function AddMedicamentoScreen() {
   const [medicamentos, setMedicamentos] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  // Sustituye la línea del ID fijo por esto:
   const [userId, setUserId] = useState(null);
+
 
   useEffect(() => {
 
     const inicializarPantalla = async () => {
       try {
-        // 1. Verificar usuario
+
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {
           setUserId(user.id);
         }
 
-        // 2. Cargar medicamentos
         const { data, error } = await supabase
             .from('medicamentos')
             .select('id, nombre')
@@ -54,7 +53,7 @@ export default function AddMedicamentoScreen() {
 
   const seleccionarMedicamento = async (medicamentoId) => {
     console.log("ID del usuario logueado:", userId);
-    // Es buena idea validar que el userId exista antes de guardar
+
     if (!userId) {
       Alert.alert("Error", "No se reconoce al usuario. Intenta reiniciar la app.");
       return;
@@ -63,7 +62,7 @@ export default function AddMedicamentoScreen() {
     const { error } = await supabase
         .from('usuario_medicamento')
         .insert({
-          usuario_id: userId, // <--- USAMOS userId (el estado que creamos)
+          usuario_id: userId,
           medicamento_id: medicamentoId,
         });
 
@@ -101,6 +100,7 @@ export default function AddMedicamentoScreen() {
   );
 
 }
+
 
 
 const styles = StyleSheet.create({

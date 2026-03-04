@@ -14,7 +14,7 @@ export default function RegisterScreen() {
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const handleRegister = async () => {
-        // 1. Validaciones previas (Mantener lo que ya tenías)
+
         if (!name || !email || !password || !confirmPassword) {
             Alert.alert('Error', 'Todos los campos son obligatorios');
             return;
@@ -24,14 +24,14 @@ export default function RegisterScreen() {
             return;
         }
 
-        // 2. Lógica de Supabase
+
         try {
             const { data, error } = await supabase.auth.signUp({
                 email: email,
                 password: password,
                 options: {
                     data: {
-                        full_name: name, // Esto guarda el nombre en la tabla auth.users
+                        full_name: name,
                     },
                 },
             });
@@ -39,12 +39,12 @@ export default function RegisterScreen() {
             if (error) {
                 Alert.alert('Error de Registro', error.message);
             } else {
-                // Si todo sale bien
+
                 Alert.alert(
                     '¡Éxito!',
                     'Cuenta creada correctamente. Ya puedes iniciar sesión.'
                 );
-                router.push('/'); // Te redirige al login
+                router.push('/'); //
             }
         } catch (err) {
             Alert.alert('Error inesperado', 'No se pudo conectar con el servidor.');
